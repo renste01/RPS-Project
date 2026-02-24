@@ -19,7 +19,7 @@ import static rps.bll.player.PlayerType.Human;
 public class Player implements IPlayer {
 
     private String name;
-    private PlayerType type = Human;
+    private PlayerType type;
 
     /**
      * @param name
