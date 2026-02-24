@@ -1,16 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
 
+<AnchorPane prefHeight="620.0" prefWidth="780.0"
+            styleClass="root-pane"
+            stylesheets="@retro.css"
+            xmlns="http://javafx.com/javafx/15.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="rps.gui.controller.GameViewController">
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rps.gui.controller.GameViewController">
-   <children>
-      <Label layoutX="86.0" layoutY="190.0" text="Now you can start to build the GUI and implement an awesome game">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-   </children>
+    <VBox AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+          AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+          spacing="0">
+
+        <!-- HEADER -->
+        <HBox styleClass="header" alignment="CENTER">
+            <Label text="✊ ✋ ✌  ROCK · PAPER · SCISSORS  ✌ ✋ ✊"
+                   styleClass="title-label"/>
+        </HBox>
+
+        <!-- SCORE BAR -->
+        <HBox styleClass="score-bar" alignment="CENTER" spacing="60">
+            <VBox alignment="CENTER" spacing="4">
+                <Label text="PLAYER" styleClass="score-name"/>
+                <Label fx:id="lblPlayerScore" text="0" styleClass="score-value"/>
+            </VBox>
+            <VBox alignment="CENTER" spacing="4">
+                <Label text="TIES" styleClass="score-name"/>
+                <Label fx:id="lblTieScore" text="0" styleClass="score-value tie"/>
+            </VBox>
+            <VBox alignment="CENTER" spacing="4">
+                <Label text="BOT" styleClass="score-name"/>
+                <Label fx:id="lblBotScore" text="0" styleClass="score-value bot"/>
+            </VBox>
+        </HBox>
+
+        <!-- ARENA -->
+        <HBox styleClass="arena" alignment="CENTER" spacing="0" HBox.hgrow="ALWAYS">
+
+            <!-- Player side -->
+            <VBox styleClass="player-panel" alignment="CENTER" spacing="14" HBox.hgrow="ALWAYS">
+                <Label text="— YOU —" styleClass="panel-title"/>
+                <Label fx:id="lblPlayerMove" text="?" styleClass="move-display player-move"/>
+                <Label fx:id="lblPlayerMoveText" text="waiting..." styleClass="move-text"/>
+            </VBox>
+
+            <!-- VS divider -->
+            <VBox styleClass="vs-divider" alignment="CENTER">
+                <Label text="VS" styleClass="vs-label"/>
+                <Label fx:id="lblResult" text="···" styleClass="result-label" wrapText="true"
+                       maxWidth="100"/>
+            </VBox>
+
+            <!-- Bot side -->
+            <VBox styleClass="player-panel bot-panel" alignment="CENTER" spacing="14" HBox.hgrow="ALWAYS">
+                <Label text="— BOT —" styleClass="panel-title"/>
+                <Label fx:id="lblBotMove" text="?" styleClass="move-display bot-move"/>
+                <Label fx:id="lblBotMoveText" text="waiting..." styleClass="move-text"/>
+            </VBox>
+
+        </HBox>
+
+        <!-- MOVE BUTTONS -->
+        <HBox styleClass="button-bar" alignment="CENTER" spacing="28">
+            <Button fx:id="btnRock"    text="✊  ROCK"    onAction="#onRock"    styleClass="move-btn"/>
+            <Button fx:id="btnPaper"   text="✋  PAPER"   onAction="#onPaper"   styleClass="move-btn"/>
+            <Button fx:id="btnScissor" text="✌  SCISSOR" onAction="#onScissor" styleClass="move-btn"/>
+        </HBox>
+
+        <!-- WIN / LOSS STATS -->
+        <HBox styleClass="stats-bar" alignment="CENTER" spacing="50">
+            <VBox alignment="CENTER" spacing="2">
+                <Label text="ROUNDS PLAYED" styleClass="stat-label"/>
+                <Label fx:id="lblRounds" text="0" styleClass="stat-value"/>
+            </VBox>
+            <VBox alignment="CENTER" spacing="2">
+                <Label text="WIN RATE" styleClass="stat-label"/>
+                <Label fx:id="lblWinRate" text="0%" styleClass="stat-value"/>
+            </VBox>
+            <VBox alignment="CENTER" spacing="2">
+                <Label text="LONGEST WIN STREAK" styleClass="stat-label"/>
+                <Label fx:id="lblStreak" text="0" styleClass="stat-value"/>
+            </VBox>
+        </HBox>
+
+        <!-- HISTORY TABLE -->
+        <VBox styleClass="history-section" VBox.vgrow="ALWAYS">
+            <Label text="[ ROUND HISTORY ]" styleClass="history-title"/>
+            <TableView fx:id="tblHistory" VBox.vgrow="ALWAYS" styleClass="history-table">
+                <columns>
+                    <TableColumn fx:id="colRound"      text="RND"    prefWidth="55"  styleClass="col-header"/>
+                    <TableColumn fx:id="colPlayerMove"  text="YOU"    prefWidth="110" styleClass="col-header"/>
+                    <TableColumn fx:id="colBotMove"    text="BOT"    prefWidth="110" styleClass="col-header"/>
+                    <TableColumn fx:id="colOutcome"    text="RESULT" prefWidth="130" styleClass="col-header"/>
+                </columns>
+                <placeholder>
+                    <Label text="No rounds played yet." styleClass="table-placeholder"/>
+                </placeholder>
+            </TableView>
+        </VBox>
+
+    </VBox>
 </AnchorPane>

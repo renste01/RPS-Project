@@ -1,0 +1,236 @@
+/* =============================================
+   retro.css  –  Rock·Paper·Scissors  Arcade UI
+   ============================================= */
+
+@font-face {
+    /* JavaFX ships with no web fonts; we rely on system monospace */
+}
+
+* {
+    -fx-font-family: "Courier New", monospace;
+}
+
+/* ── Root ─────────────────────────────────── */
+.root-pane {
+    -fx-background-color: #0d0d0d;
+}
+
+/* ── Header ───────────────────────────────── */
+.header {
+    -fx-background-color: #111111;
+    -fx-border-color: #f5c842;
+    -fx-border-width: 0 0 3 0;
+    -fx-padding: 14 0 14 0;
+}
+
+.title-label {
+    -fx-text-fill: #f5c842;
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-letter-spacing: 2px;
+}
+
+/* ── Score bar ────────────────────────────── */
+.score-bar {
+    -fx-background-color: #1a1a1a;
+    -fx-border-color: #333333;
+    -fx-border-width: 0 0 2 0;
+    -fx-padding: 12 0 12 0;
+}
+
+.score-name {
+    -fx-text-fill: #888888;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.score-value {
+    -fx-text-fill: #00e676;
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+}
+
+.score-value.tie {
+    -fx-text-fill: #f5c842;
+}
+
+.score-value.bot {
+    -fx-text-fill: #ff4f4f;
+}
+
+/* ── Arena ────────────────────────────────── */
+.arena {
+    -fx-background-color: #111111;
+    -fx-padding: 24 0 24 0;
+    -fx-min-height: 170;
+}
+
+.player-panel {
+    -fx-padding: 0 30 0 30;
+}
+
+.bot-panel {
+    /* mirror styling, nothing extra needed */
+}
+
+.panel-title {
+    -fx-text-fill: #555555;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.move-display {
+    -fx-font-size: 52px;
+    -fx-text-fill: #f5c842;
+    -fx-background-color: #1e1e1e;
+    -fx-border-color: #f5c842;
+    -fx-border-width: 2;
+    -fx-padding: 10 20 10 20;
+    -fx-min-width: 110;
+    -fx-alignment: CENTER;
+}
+
+.move-display.bot-move {
+    -fx-border-color: #ff4f4f;
+    -fx-text-fill: #ff4f4f;
+}
+
+.move-text {
+    -fx-text-fill: #aaaaaa;
+    -fx-font-size: 12px;
+}
+
+/* ── VS divider ───────────────────────────── */
+.vs-divider {
+    -fx-padding: 0 20 0 20;
+    -fx-min-width: 110;
+    -fx-alignment: CENTER;
+    -fx-spacing: 10;
+}
+
+.vs-label {
+    -fx-text-fill: #444444;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.result-label {
+    -fx-text-fill: #f5c842;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER;
+    -fx-text-alignment: CENTER;
+}
+
+/* ── Move buttons ─────────────────────────── */
+.button-bar {
+    -fx-background-color: #0d0d0d;
+    -fx-padding: 16 0 16 0;
+    -fx-border-color: #222222;
+    -fx-border-width: 1 0 1 0;
+}
+
+.move-btn {
+    -fx-background-color: #1a1a1a;
+    -fx-text-fill: #f5c842;
+    -fx-border-color: #f5c842;
+    -fx-border-width: 2;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 12 28 12 28;
+    -fx-cursor: hand;
+}
+
+.move-btn:hover {
+    -fx-background-color: #f5c842;
+    -fx-text-fill: #0d0d0d;
+}
+
+.move-btn:pressed {
+    -fx-background-color: #c9a100;
+    -fx-border-color: #c9a100;
+    -fx-text-fill: #0d0d0d;
+}
+
+/* ── Stats bar ────────────────────────────── */
+.stats-bar {
+    -fx-background-color: #141414;
+    -fx-padding: 10 0 10 0;
+    -fx-border-color: #2a2a2a;
+    -fx-border-width: 1 0 1 0;
+}
+
+.stat-label {
+    -fx-text-fill: #555555;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+}
+
+.stat-value {
+    -fx-text-fill: #cccccc;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+/* ── History ──────────────────────────────── */
+.history-section {
+    -fx-background-color: #0d0d0d;
+    -fx-padding: 10 16 16 16;
+    -fx-spacing: 8;
+}
+
+.history-title {
+    -fx-text-fill: #444444;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.history-table {
+    -fx-background-color: #111111;
+    -fx-border-color: #2a2a2a;
+    -fx-border-width: 1;
+    -fx-table-cell-border-color: #1e1e1e;
+}
+
+.history-table .column-header-background {
+    -fx-background-color: #0d0d0d;
+}
+
+.history-table .column-header,
+.history-table .column-header .filler {
+    -fx-background-color: #0d0d0d;
+    -fx-border-color: #333333;
+    -fx-border-width: 0 1 2 0;
+}
+
+.history-table .column-header .label {
+    -fx-text-fill: #f5c842;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER;
+}
+
+.history-table .table-row-cell {
+    -fx-background-color: #111111;
+    -fx-text-fill: #cccccc;
+    -fx-font-size: 12px;
+}
+
+.history-table .table-row-cell:odd {
+    -fx-background-color: #161616;
+}
+
+.history-table .table-row-cell:selected {
+    -fx-background-color: #2a2200;
+}
+
+.history-table .table-cell {
+    -fx-text-fill: #cccccc;
+    -fx-alignment: CENTER;
+    -fx-padding: 4 8 4 8;
+}
+
+.table-placeholder {
+    -fx-text-fill: #444444;
+    -fx-font-size: 12px;
+}

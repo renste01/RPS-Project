@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
-public class BotHuset implements IPlayer
-{
+public class BotHuset implements IPlayer {
     private String name;
     private PlayerType type;
 
