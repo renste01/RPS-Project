@@ -10,17 +10,17 @@ import java.util.ArrayList;
 
 public class BotHuset implements IPlayer
 {
-    private String name = "BotHuset";
-    private PlayerType type = AI;
+    private String name;
+    private PlayerType type;
 
     @Override
     public String getPlayerName() {
-        return "";
+        return "BotHuset";
     }
 
     @Override
     public PlayerType getPlayerType() {
-        return null;
+        return AI;
     }
 
     @Override
