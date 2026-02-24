@@ -4,7 +4,6 @@ import rps.bll.game.IGameState;
 import rps.bll.game.Move;
 import rps.bll.game.Result;
 
-import static rps.bll.player.Player.getMove;
 import static rps.bll.player.PlayerType.AI;
 
 import java.util.ArrayList;
@@ -28,6 +27,11 @@ public class BotHuset implements IPlayer
 
     @Override
     public Move doMove(IGameState state)
+    {
+        return getMove(state);
+    }
+
+    static Move getMove(IGameState state)
     {
         ArrayList<Result> results = (ArrayList<Result>) state.getHistoricResults();
         Random rand = new Random();

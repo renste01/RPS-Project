@@ -9,6 +9,7 @@ import rps.bll.game.Result;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static rps.bll.player.BotHuset.getMove;
 import static rps.bll.player.PlayerType.Human;
 
 /**
@@ -51,11 +52,6 @@ public class Player implements IPlayer {
     @Override
     public Move doMove(IGameState state) {
         //Historic data to analyze and decide next move...
-        return getMove(state);
-    }
-
-    static Move getMove(IGameState state)
-    {
-        return getMove(state);
+        return doMove(state);
     }
 }
