@@ -22,9 +22,9 @@ public class GameManager {
      * Initializes the GameManager with IPlayers
      * Game expected to be played Human vs Bot
      * @param human
-     * @param bot
+     * @param BotHuset
      */
-    public GameManager(IPlayer human, IPlayer bot) {
+    public GameManager(IPlayer human, IPlayer BotHuset) {
         gameState = new GameState(new ArrayList<>(), 1);
         this.human = human;
         this.BotHuset = BotHuset;
