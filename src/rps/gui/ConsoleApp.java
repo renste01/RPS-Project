@@ -5,7 +5,6 @@ import rps.bll.game.*;
 import rps.bll.player.*;
 
 // Java imports
-import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -33,6 +32,7 @@ public class ConsoleApp {
 
         GameManager ge = new GameManager(human, bot);
 
+        // --- GAME LOOP ---
         while (true) {
             String playerMove = getPlayerMove();
 
@@ -41,29 +41,35 @@ public class ConsoleApp {
 
             ge.playRound(Move.valueOf(playerMove));
 
-            ge.getGameState().getHistoricResults().forEach((result) -> {
-                System.out.println(getResultAsString(result));
-            });
+            // Print KUN sidste runde
+            Result lastResult = null;
+            for (Result r : ge.getGameState().getHistoricResults()) {
+                lastResult = r;
+            }
+
+            if (lastResult != null) {
+                System.out.println(getResultAsString(lastResult));
+            }
         }
 
-        if (ge.getGameState().getHistoricResults().size() > 0)
-            System.out.println("Game stats: ....ehmmmm..not implemented yet...please FIXME");
-    }
+        // --- PRINT RESULTATER EFTER EXIT ---
+        System.out.println("\nFinal results:");
+        ge.getGameState().getHistoricResults().forEach((result) -> {
+            System.out.println(getResultAsString(result));
+        });
 
+        System.out.println("\nThanks for playing!");
+    }
 
     /**
      * Famous robots...
-     * @return
      */
     private String getBotName() {
         return "BotHuset";
     }
 
-
     /**
      * Ask the human player to make a move...
-     *
-     * @return Rock, Paper or Scissor as String
      */
     public String getPlayerMove() {
         Scanner keyboard = new Scanner(System.in);
@@ -77,17 +83,20 @@ public class ConsoleApp {
             input = keyboard.next();
 
             if (input.equalsIgnoreCase("rock") || input.equalsIgnoreCase("r") ||
-                input.equalsIgnoreCase("paper") || input.equalsIgnoreCase("p") ||
-                input.equalsIgnoreCase("scissor") || input.equalsIgnoreCase("s") ||
-                input.equalsIgnoreCase("exit") || input.equalsIgnoreCase("e")) {
+                    input.equalsIgnoreCase("paper") || input.equalsIgnoreCase("p") ||
+                    input.equalsIgnoreCase("scissor") || input.equalsIgnoreCase("s") ||
+                    input.equalsIgnoreCase("exit") || input.equalsIgnoreCase("e")) {
+
                 inputOK = true;
 
-                if (input.equalsIgnoreCase("r")) { input = "Rock"; }
-                else if (input.equalsIgnoreCase("p")) { input = "Paper"; }
-                else if (input.equalsIgnoreCase("s")) { input = "Scissor"; }
-                else if (input.equalsIgnoreCase("e")) { input = "Exit"; }
+                if (input.equalsIgnoreCase("r")) input = "Rock";
+                else if (input.equalsIgnoreCase("p")) input = "Paper";
+                else if (input.equalsIgnoreCase("s")) input = "Scissor";
+                else if (input.equalsIgnoreCase("e")) input = "Exit";
             }
-            else { System.out.println("Invalid input. Try again :)"); }
+            else {
+                System.out.println("Invalid input. Try again :)");
+            }
         }
         while (!inputOK);
 
@@ -96,15 +105,12 @@ public class ConsoleApp {
 
     /**
      * Provides a custom formatted string representation of a Result
-     *
-     * @param result
-     * @return
      */
     public String getResultAsString(Result result) {
         String statusText = result.getType() == ResultType.Win ? "wins over " : "ties ";
 
-        return "Round #" + result.getRoundNumber() + ":" +
-                result.getWinnerPlayer().getPlayerName() +
+        return "Round #" + result.getRoundNumber() +
+                ": " + result.getWinnerPlayer().getPlayerName() +
                 " (" + result.getWinnerMove() + ") " +
                 statusText + result.getLoserPlayer().getPlayerName() +
                 " (" + result.getLoserMove() + ")!";
