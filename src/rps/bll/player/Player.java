@@ -8,6 +8,8 @@ import rps.bll.game.Result;
 //Java imports
 import java.util.ArrayList;
 
+import static rps.bll.player.PlayerType.Human;
+
 /**
  * Example implementation of a player.
  *
@@ -16,7 +18,7 @@ import java.util.ArrayList;
 public class Player implements IPlayer {
 
     private String name;
-    private PlayerType type;
+    private PlayerType type = Human;
 
     /**
      * @param name

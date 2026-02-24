@@ -8,7 +8,8 @@ import java.util.ArrayList;
  *
  * @author smsj
  */
-public class GameState implements IGameState {
+public class GameState implements IGameState
+{
 
     private ArrayList<Result> historicResults;
     private int roundNumber;
@@ -18,7 +19,8 @@ public class GameState implements IGameState {
      * @param historicResults
      * @param roundNumber
      */
-    public GameState(ArrayList<Result> historicResults, int roundNumber) {
+    public GameState(ArrayList<Result> historicResults, int roundNumber)
+    {
         this.historicResults = new ArrayList<>();
         this.roundNumber = roundNumber;
     }
