@@ -54,16 +54,8 @@ public class Player implements IPlayer {
         return getMove(state);
     }
 
-    static Move getMove(IGameState state) {
-        ArrayList<Result> results = (ArrayList<Result>) state.getHistoricResults();
-        Random rand = new Random();
-        int nr = rand.nextInt(3);
-        if (nr == 0) {
-            return Move.Rock;
-        } else if (nr == 1) {
-            return Move.Paper;
-        } else {
-            return Move.Scissor;
-        }
+    static Move getMove(IGameState state)
+    {
+        return getMove(state);
     }
 }

@@ -29,7 +29,16 @@ public class BotHuset implements IPlayer
     @Override
     public Move doMove(IGameState state)
     {
-        return getMove(state);
+        ArrayList<Result> results = (ArrayList<Result>) state.getHistoricResults();
+        Random rand = new Random();
+        int nr = rand.nextInt(3);
+        if (nr == 0) {
+            return Move.Rock;
+        } else if (nr == 1) {
+            return Move.Paper;
+        } else {
+            return Move.Scissor;
+        }
     }
 
 }
