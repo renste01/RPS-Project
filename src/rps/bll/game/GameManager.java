@@ -4,6 +4,7 @@ package rps.bll.game;
 import java.util.ArrayList;
 
 //Project imports
+import rps.bll.player.BotHuset;
 import rps.bll.player.IPlayer;
 
 /**
@@ -14,7 +15,7 @@ import rps.bll.player.IPlayer;
 public class GameManager {
 
     private IGameState gameState;
-    private IPlayer bot;
+    private IPlayer BotHuset;
     private IPlayer human;
 
     /**
@@ -26,7 +27,7 @@ public class GameManager {
     public GameManager(IPlayer human, IPlayer bot) {
         gameState = new GameState(new ArrayList<>(), 1);
         this.human = human;
-        this.bot = bot;
+        this.BotHuset = BotHuset;
     }
 
     /**
@@ -36,19 +37,19 @@ public class GameManager {
      */
     public Result playRound(Move human_move)
     {
-        Move bot_move = bot.doMove(gameState); //ask the bot to make a move...
+        Move bot_move = BotHuset.doMove(gameState); //ask the bot to make a move...
         Result result;
         int roundNumber = gameState.getRoundNumber();
 
         //Rules
         if (human_move == bot_move)
-            result = new Result(human, human_move, bot, bot_move, ResultType.Tie, roundNumber);
+            result = new Result(human, human_move, BotHuset, bot_move, ResultType.Tie, roundNumber);
         else if ((human_move == Move.Rock && bot_move == Move.Scissor) ||
                 (human_move == Move.Scissor && bot_move == Move.Paper) ||
                 (human_move == Move.Paper && bot_move == Move.Rock)) {
-            result = new Result(human, human_move, bot, bot_move, ResultType.Win, roundNumber);
+            result = new Result(human, human_move, BotHuset, bot_move, ResultType.Win, roundNumber);
         } else {
-            result = new Result(bot, bot_move, human, human_move, ResultType.Win, roundNumber);
+            result = new Result(BotHuset, bot_move, human, human_move, ResultType.Win, roundNumber);
         }
 
         gameState.setRoundNumber(++roundNumber);

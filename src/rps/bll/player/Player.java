@@ -19,7 +19,7 @@ import static rps.bll.player.PlayerType.Human;
 public class Player implements IPlayer {
 
     private String name;
-    private PlayerType type = Human;
+    private PlayerType type;
 
     /**
      * @param name
@@ -44,16 +44,20 @@ public class Player implements IPlayer {
 
     /**
      * Decides the next move for the bot...
+     *
      * @param state Contains the current game state including historic moves/results
      * @return Next move
      */
     @Override
     public Move doMove(IGameState state) {
         //Historic data to analyze and decide next move...
+        return getMove(state);
+    }
+
+    static Move getMove(IGameState state) {
         ArrayList<Result> results = (ArrayList<Result>) state.getHistoricResults();
         Random rand = new Random();
         int nr = rand.nextInt(3);
-
         if (nr == 0) {
             return Move.Rock;
         } else if (nr == 1) {
