@@ -26,7 +26,7 @@ public class ConsoleApp {
         String playerName = keyboard.next();
 
         IPlayer human = new Player(playerName, PlayerType.Human);
-        IPlayer bot = new Player(getRandomBotName(), PlayerType.AI);
+        IPlayer bot = new Player(getBotName(), PlayerType.AI);
 
         System.out.println("Your opponent is " + bot.getPlayerName());
         System.out.println("Starting game.... good luck both!");
@@ -55,19 +55,8 @@ public class ConsoleApp {
      * Famous robots...
      * @return
      */
-    private String getRandomBotName() {
-        String[] botNames = new String[] {
-                "R2D2",
-                "Mr. Data",
-                "3PO",
-                "Bender",
-                "Marvin the Paranoid Android",
-                "Bishop",
-                "Robot B-9",
-                "HAL"
-        };
-        int randomNumber = new Random().nextInt(botNames.length - 1);
-        return botNames[randomNumber];
+    private String getBotName() {
+        return "BotHuset";
     }
 
 
