@@ -52,6 +52,6 @@ public class Player implements IPlayer {
     @Override
     public Move doMove(IGameState state) {
         //Historic data to analyze and decide next move...
-        return doMove(state);
+        return getMove(state);
     }
 }
