@@ -32,6 +32,7 @@ public class GameState implements IGameState
 
     @Override
     public void setRoundNumber(int roundNumber) {
+        this.historicResults = new ArrayList<>();
         this.roundNumber = roundNumber;
     }
 

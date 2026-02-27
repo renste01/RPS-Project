@@ -50,12 +50,16 @@
     -fx-font-weight: bold;
 }
 
-.score-value.tie {
+.score-value-tie {
     -fx-text-fill: #f5c842;
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
 }
 
-.score-value.bot {
+.score-value-bot {
     -fx-text-fill: #ff4f4f;
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
 }
 
 /* ── Arena ────────────────────────────────── */

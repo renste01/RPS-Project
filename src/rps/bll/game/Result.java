@@ -35,6 +35,9 @@ public class Result {
         this.roundNumber = roundNumber;
     }
 
+    public Result(Move playerMove, Move botMove) {
+    }
+
     public Move getWinnerMove() {
         return winnerMove;
     }
@@ -58,4 +61,6 @@ public class Result {
     public ResultType getType() {
         return type;
     }
+
+
 }
